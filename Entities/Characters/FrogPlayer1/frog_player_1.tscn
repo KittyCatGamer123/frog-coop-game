@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://gpx2pwp5u0ig"]
+
+[ext_resource type="Script" uid="uid://c72skte6v0ar1" path="res://Entities/Characters/FrogPlayer1/FrogPlayer1.gd" id="1_vtmuk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc8an"]
+size = Vector2(16, 16)
+
+[node name="FrogPlayer1" type="CharacterBody2D" unique_id=455071652]
+script = ExtResource("1_vtmuk")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=497265433]
+shape = SubResource("RectangleShape2D_bc8an")
+
+[node name="SpriteFrames" type="AnimatedSprite2D" parent="." unique_id=1421146517]
