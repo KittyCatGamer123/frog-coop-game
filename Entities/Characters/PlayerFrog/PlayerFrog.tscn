@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://gpx2pwp5u0ig"]
+
+[ext_resource type="Script" uid="uid://c72skte6v0ar1" path="res://Entities/Characters/PlayerFrog/PlayerFrog.gd" id="1_rwmoa"]
+[ext_resource type="Texture2D" uid="uid://j6w8h1owehl7" path="res://Entities/Characters/PlayerFrog/ToxicFrogBlueBlue_Attack.png" id="2_qo4qu"]
+[ext_resource type="Texture2D" uid="uid://b17n15e323v5j" path="res://Entities/Characters/PlayerFrog/ToxicFrogGreenBrown_Attack.png" id="2_ukvjm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fjhu"]
+atlas = ExtResource("2_ukvjm")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu67w"]
+atlas = ExtResource("2_qo4qu")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rwmoa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fjhu")
+}],
+"loop": 0,
+"name": &"tree",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu67w")
+}],
+"loop": 0,
+"name": &"water",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uh2m6"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acjr5"]
+size = Vector2(14, 14)
+
+[node name="Frog" type="CharacterBody2D" unique_id=455071652]
+script = ExtResource("1_rwmoa")
+
+[node name="SpriteFrames" type="AnimatedSprite2D" parent="." unique_id=1421146517]
+position = Vector2(2, -1)
+sprite_frames = SubResource("SpriteFrames_rwmoa")
+animation = &"tree"
+flip_h = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=497265433]
+position = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_uh2m6")
+
+[node name="PlayerAboveCast" type="RayCast2D" parent="." unique_id=1521060857]
+position = Vector2(0, -6)
+target_position = Vector2(0, -1)
+
+[node name="SpawnTongueRight" type="Node2D" parent="." unique_id=746114711]
+position = Vector2(12, 1)
+
+[node name="SpawnTongueLeft" type="Node2D" parent="." unique_id=233719880]
+position = Vector2(-8, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=712150675]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=494537749]
+visible = false
+position = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_acjr5")

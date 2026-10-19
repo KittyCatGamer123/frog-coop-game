@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d287svme356tx"]
+
+[ext_resource type="Script" uid="uid://djqu1pkxgeluk" path="res://Entities/LevelComponents/Liquid/LevelLiquid.gd" id="1_wj0vd"]
+
+[node name="LevelLiquid" type="Area2D" unique_id=802626208]
+script = ExtResource("1_wj0vd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1319563499]
+visible = false
+polygon = PackedVector2Array(3, -1, 8, 0, 14, 0, 19, -1, 24, 0, 28, 1, 32, 1, 35, 0, 39, 0, 42, 1, 45, 2, 49, 0, 52, -1, 56, 0, 59, 2, 62, 2, 65, 0, 67, 0, 71, 0, 75, 1, 78, 2, 83, 1, 86, -1, 90, -1, 92, 1, 96, 1, 98, -1, 101, -1, 104, 1, 108, 2, 109, -1, 112, -1, 112, 28, 0, 28, 0, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1742014653]
+color = Color(0.39607844, 0.6, 0.30588236, 0.6666667)
+polygon = PackedVector2Array(3, -1, 8, 0, 14, 0, 19, -1, 24, 0, 28, 1, 32, 1, 35, 0, 39, 0, 42, 1, 45, 2, 49, 0, 52, -1, 56, 0, 59, 2, 62, 2, 65, 0, 67, 0, 71, 0, 75, 1, 78, 2, 83, 1, 86, -1, 90, -1, 92, 1, 96, 1, 98, -1, 101, -1, 104, 1, 108, 2, 109, -1, 112, -1, 112, 28, 0, 28, 0, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
