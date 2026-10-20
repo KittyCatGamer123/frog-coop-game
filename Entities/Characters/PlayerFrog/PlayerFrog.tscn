@@ -37,8 +37,14 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acjr5"]
 size = Vector2(14, 14)
 
+[sub_resource type="LabelSettings" id="LabelSettings_uh2m6"]
+font_size = 10
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Frog" type="CharacterBody2D" unique_id=455071652]
 script = ExtResource("1_rwmoa")
+TongueLengthLimit = 50
 
 [node name="SpriteFrames" type="AnimatedSprite2D" parent="." unique_id=1421146517]
 position = Vector2(2, -1)
@@ -66,3 +72,12 @@ position = Vector2(-8, 1)
 visible = false
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_acjr5")
+
+[node name="RemainingLength" type="Label" parent="." unique_id=477366673]
+offset_left = -20.0
+offset_top = -29.0
+offset_right = 20.0
+offset_bottom = -15.0
+text = "50"
+label_settings = SubResource("LabelSettings_uh2m6")
+horizontal_alignment = 1

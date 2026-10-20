@@ -15,6 +15,7 @@ var tongue_object: Tongue = null
 @onready var sprite_frames = $SpriteFrames
 @onready var player_above_cast = $PlayerAboveCast
 @onready var area_collider: Area2D = $Area2D
+@onready var tongue_length_label: Label = $RemainingLength
 var tongue_scene = load("res://Entities/Characters/Tongue/Tongue.tscn")
 
 @export var Type := FrogType.TREE: 
@@ -22,11 +23,13 @@ var tongue_scene = load("res://Entities/Characters/Tongue/Tongue.tscn")
 	get: return Type
 @export var MovementSpeed: float = 250.0
 @export var JumpForce: float = -300.0
+@export var TongueLengthLimit: int = 25
 var in_water: bool = false
 
 func _ready() -> void:
 	is_editor = Engine.is_editor_hint()
 	sprite_frames.flip_h = (global_position.x >= 0)
+	tongue_length_label.text = str(TongueLengthLimit)
 	set_frog(Type)
 
 func set_frog(type: FrogType) -> void:
@@ -67,6 +70,7 @@ func _physics_process(delta: float) -> void:
 		if tongue_mode_active:
 			tongue_object.destroy()
 		else:
+			velocity.x = 0
 			tongue_object = tongue_scene.instantiate()
 			tongue_mode_active = true
 			add_child(tongue_object)
@@ -85,6 +89,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed(frog_name+"_jump"):
 			player_jump()
 		player_movement()
+	
+	if tongue_mode_active:
+		tongue_length_label.text = str(TongueLengthLimit - len(tongue_object.tongue_path))
 	
 	move_and_slide()
 
