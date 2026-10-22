@@ -14,6 +14,7 @@ const LiquidColours = {
 	get: return Type
 
 func _ready() -> void:
+	is_editor = Engine.is_editor_hint()
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
 
 func set_liquid(liquid: LiquidType) -> void:

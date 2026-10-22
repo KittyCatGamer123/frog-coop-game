@@ -69,6 +69,12 @@ water_jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Tongue"
+2d_physics/layer_3="Interactables"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
