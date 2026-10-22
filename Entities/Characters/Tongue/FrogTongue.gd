@@ -57,7 +57,7 @@ func add_position_to_path() -> void:
 	if tongue_path[-1] != new_pos:
 		tongue_path.append(new_pos)
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	player_frog.queue_redraw()
 	
 	if alive:
