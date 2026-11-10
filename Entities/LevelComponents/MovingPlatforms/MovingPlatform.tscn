@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dsyfbxxlsce7g"]
+
+[ext_resource type="Script" uid="uid://coas8f6jgycl1" path="res://Entities/LevelComponents/MovingPlatforms/moving_platform.gd" id="1_baaap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+resource_local_to_scene = true
+
+[node name="MovingPlatform" type="Path2D" unique_id=146062073]
+script = ExtResource("1_baaap")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=1360577996]
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D" unique_id=1037763111]
+remote_path = NodePath("../../AnimatableBody2D")
+update_rotation = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1128939219]
+
+[node name="Platform" type="Sprite2D" parent="AnimatableBody2D" unique_id=700764125]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=22604292]
+shape = SubResource("RectangleShape2D_g4v7s")
