@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dghl28m6vyfbo"]
+
+[ext_resource type="Texture2D" uid="uid://djvb88453yy0p" path="res://Entities/LevelComponents/LevelTilemap/Whitetile.png" id="1_fyq6p"]
+[ext_resource type="Script" uid="uid://eo13vd8jgttq" path="res://Entities/LevelComponents/Lever/lever.gd" id="1_pk3hn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(32, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(32, 8)
+
+[node name="Lever" type="StaticBody2D" unique_id=486372098]
+script = ExtResource("1_pk3hn")
+SingleUse = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2125257029]
+position = Vector2(16, 2)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="LeverBase" type="Sprite2D" parent="." unique_id=1387665559]
+position = Vector2(16, 2)
+scale = Vector2(2, 0.25)
+texture = ExtResource("1_fyq6p")
+
+[node name="LeverSwitch" type="Sprite2D" parent="." unique_id=2033007201]
+modulate = Color(0.91332084, 0, 0.13794783, 1)
+position = Vector2(16, 8)
+scale = Vector2(2, 0.5)
+texture = ExtResource("1_fyq6p")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1727005648]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=746948032]
+position = Vector2(16, 8)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[connection signal="body_entered" from="Area2D" to="." method="body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="body_exited"]
