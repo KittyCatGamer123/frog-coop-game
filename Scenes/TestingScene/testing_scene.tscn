@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ct247nsgcyspb" path="res://Entities/LevelComponents/Button/Button.tscn" id="3_dlj7s"]
 [ext_resource type="PackedScene" uid="uid://d287svme356tx" path="res://Entities/LevelComponents/Liquid/LevelLiquid.tscn" id="3_gcdjp"]
 [ext_resource type="Texture2D" uid="uid://djvb88453yy0p" path="res://Entities/LevelComponents/LevelTilemap/Whitetile.png" id="4_02pm4"]
+[ext_resource type="PackedScene" uid="uid://cbavxgyikar5c" path="res://Entities/LevelComponents/MoveableBox/MoveableBox.tscn" id="7_peglh"]
 
 [sub_resource type="Gradient" id="Gradient_gcdjp"]
 offsets = PackedFloat32Array(0, 0.25, 0.6830065, 1)
@@ -73,15 +74,22 @@ tile_map_data = PackedByteArray("AADx/wYAAAAAAAAAAADy/wYAAAAAAAAAAADy/wcAAAAAAAA
 tile_set = ExtResource("1_bc8an")
 
 [node name="Button" parent="." unique_id=744740129 node_paths=PackedStringArray("ToggleList") instance=ExtResource("3_dlj7s")]
-position = Vector2(305, -16)
+position = Vector2(-12, 144)
+ButtonOrientation = 0
 SingleUse = false
 ToggleList = [NodePath("../TileMap-Toggle1"), NodePath("../TileMap-Toggle2")]
 
+[node name="CollisionShape" parent="Button" index="0" unique_id=1049955327]
+position = Vector2(16, 14)
+
+[node name="ButtonHolder" parent="Button" index="1" unique_id=1304019434]
+position = Vector2(16, 14)
+
 [node name="ButtonPlate" parent="Button" index="2" unique_id=855646473]
-position = Vector2(16, 6)
+position = Vector2(16, 10)
 
 [node name="CollisionShape2D" parent="Button/Area2D" parent_id_path=PackedInt32Array(744740129, 700687027) index="0" unique_id=680801957]
-position = Vector2(16, 6)
+position = Vector2(16, 10)
 
 [node name="TreeFrog" parent="." unique_id=455071652 instance=ExtResource("2_a5apg")]
 position = Vector2(-312, 196)
@@ -123,6 +131,10 @@ texture = ExtResource("4_02pm4")
 lifetime = 4.0
 explosiveness = 0.97
 process_material = SubResource("ParticleProcessMaterial_am13a")
+
+[node name="MoveableBox" parent="." unique_id=1096916705 groups=["Moveable"] instance=ExtResource("7_peglh")]
+position = Vector2(4, 101)
+boxTexture = ExtResource("4_02pm4")
 
 [connection signal="body_entered" from="Button/Area2D" to="Button" method="body_entered"]
 

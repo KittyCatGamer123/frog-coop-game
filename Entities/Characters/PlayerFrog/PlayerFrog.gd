@@ -23,6 +23,8 @@ var tongue_scene = load("res://Entities/Characters/Tongue/Tongue.tscn")
 	get: return Type
 @export var MovementSpeed: float = 250.0
 @export var JumpForce: float = -300.0
+@export var PushForce: float = 100.0
+@export var MaxVel: float = 150
 @export var TongueLengthLimit: int = 25
 var in_water: bool = false
 
@@ -92,6 +94,13 @@ func _physics_process(delta: float) -> void:
 	
 	if tongue_mode_active:
 		tongue_length_label.text = str(TongueLengthLimit - len(tongue_object.tongue_path))
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collision_moveable = collision.get_collider()
+		if collision_moveable.is_in_group("Moveable") and abs(collision_moveable.get_linear_velocity().x) < MaxVel:
+			collision_moveable.apply_central_impulse(collision.get_normal() * -PushForce)
+		
 	
 	move_and_slide()
 

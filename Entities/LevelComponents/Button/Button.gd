@@ -84,6 +84,10 @@ func on_body_entered(body: Node2D) -> void:
 	if (body is Frog) and (AllowBodyPress):
 		button_activate()
 		return
+	
+	if body is MoveableBox:
+		button_activate()
+		return
 
 func on_body_exit(body: Node2D) -> void:
 	if SingleUse:
